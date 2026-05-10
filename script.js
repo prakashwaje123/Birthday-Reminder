@@ -65,12 +65,21 @@ const month = eventDate.getMonth() + 1;
 
 const day = eventDate.getDate();
 
-    let nextDate = new Date(currentYear, month - 1, day);
+    let nextDate = new Date(
+  currentYear,
+  eventDate.getMonth(),
+  eventDate.getDate()
+);
 
-    if(nextDate < today){
-      nextDate = new Date(currentYear + 1, month - 1, day);
-    }
+if(nextDate < today){
 
+  nextDate = new Date(
+    currentYear + 1,
+    eventDate.getMonth(),
+    eventDate.getDate()
+  );
+
+}
     const diffTime = nextDate - today;
 
     const diffDays = Math.ceil(
