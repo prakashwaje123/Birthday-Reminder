@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>वाजे परिवार दिनविशेष</title>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "a81aad78-0bb6-4bd5-8dcd-e401d6d3f358",
+    });
+  });
+</script>
 
   <link rel="stylesheet" href="style.css">
 
@@ -57,7 +66,7 @@
 
   </form>
 
-  <h2>Upcoming Celebrations</h2>
+  <h2>Upcoming Events</h2>
 
   <div id="reminderList"></div>
 
