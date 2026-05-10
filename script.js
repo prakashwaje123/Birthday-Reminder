@@ -15,12 +15,28 @@ const reminderList = document.getElementById("reminderList");
 
 
 form.addEventListener("submit", async (e) => {
-
   e.preventDefault();
 
+  const inputDate = document.getElementById("date").value;
+  const inputName = document.getElementById("name").value;
+
+  // 1. Fetch current data to check for duplicates
+  const res = await fetch(API_URL);
+  const existingData = await res.json();
+
+  // 2. Check if an entry with the same name AND date already exists
+  const isDuplicate = existingData.some(entry => 
+    entry.date === inputDate && entry.name.toLowerCase() === inputName.toLowerCase()
+  );
+
+  if (isDuplicate) {
+    alert("This event for " + inputName + " is already registered!");
+    return; // Stop the submission
+  }
+
   const data = {
-    name: document.getElementById("name").value,
-    date: document.getElementById("date").value,
+    name: inputName,
+    date: inputDate,
     type: document.getElementById("type").value,
     phone: document.getElementById("phone").value,
     notes: document.getElementById("notes").value
@@ -32,13 +48,8 @@ form.addEventListener("submit", async (e) => {
   });
 
   form.reset();
-
   loadReminders();
-
-  checkTodayReminders();
-
 });
-
 
 
 async function loadReminders() {
