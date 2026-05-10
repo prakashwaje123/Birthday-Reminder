@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
 
 });
 
-const API_URL = "https://script.google.com/macros/s/AKfycbz5qg75ds4qCKWEm4C_EFTYOZxCrohlA4sIhlyjx_KpqLM0YN2fcHqzR_EMIDpyYmLi/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzRG07EBU8FxTW4tIsl7j0PGl_x9aDmiq8qQN3F3RFB_NIiiQi8FefZRrjm__QSnYk/exec";
 
 const form = document.getElementById("reminderForm");
 const reminderList = document.getElementById("reminderList");
@@ -129,7 +129,6 @@ async function loadReminders() {
   });
 
 }
-
 
 
 async function checkTodayReminders() {
