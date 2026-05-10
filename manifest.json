@@ -1,10 +1,10 @@
 {
-  "name": "Celebration Reminder",
-  "short_name": "Reminder",
-  "start_url": ".",
+  "name": "वाजे परिवार दिनविशेष",
+  "short_name": "दिनविशेष",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#ff4081",
+  "theme_color": "#e63946",
   "orientation": "portrait",
   "icons": [
     {
