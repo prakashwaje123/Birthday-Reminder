@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Celebration Reminder</title>
+
+  <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>🎉 Celebration Reminder</h1>
+
+  <form id="reminderForm">
+
+    <input
+      type="text"
+      id="name"
+      placeholder="Name"
+      required
+    >
+
+    <input
+      type="date"
+      id="date"
+      required
+    >
+
+    <select id="type" required>
+      <option value="Birthday">🎂 Birthday</option>
+      <option value="Anniversary">💍 Anniversary</option>
+      <option value="Special Day">⭐ Special Day</option>
+    </select>
+
+    <input
+      type="text"
+      id="phone"
+      placeholder="Phone Number"
+    >
+
+    <textarea
+      id="notes"
+      placeholder="Notes"
+    ></textarea>
+
+    <button type="submit">
+      Save Reminder
+    </button>
+
+  </form>
+
+  <h2>Upcoming Celebrations</h2>
+
+  <div id="reminderList"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
