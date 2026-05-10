@@ -59,10 +59,11 @@ async function loadReminders() {
 
   data.forEach(person => {
 
-    const parts = person.date.trim().split("-");
+const eventDate = new Date(person.date);
 
-    const month = parseInt(parts[1]);
-    const day = parseInt(parts[2]);
+const month = eventDate.getMonth() + 1;
+
+const day = eventDate.getDate();
 
     let nextDate = new Date(currentYear, month - 1, day);
 
@@ -121,7 +122,11 @@ async function loadReminders() {
       <h3>${icon} ${person.name}</h3>
       <p><strong>${person.type}</strong></p>
       <p>${countdown}</p>
-      <p>${person.date}</p>
+      <p>
+${String(day).padStart(2,'0')}-
+${String(month).padStart(2,'0')}-
+${eventDate.getFullYear()}
+</p>
     `;
 
     reminderList.appendChild(card);
