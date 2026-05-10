@@ -118,15 +118,15 @@ if(nextDate < today){
 
   const day = eventDate.getDate();
 
-  let icon = "🎂";
+  let icon = "🎂"; // Default
 
-    if(person.type === "Anniversary"){
-      icon = "💍";
-    }
-
-    if(person.type === "Special Day"){
-      icon = "⭐";
-    }
+  if (person.type === "Anniversary") {
+    icon = "💍";
+  } else if (person.type === "Death Anniversary") {
+    icon = "🙏"; // Your new icon here
+  } else if (person.type === "Special Day") {
+    icon = "⭐";
+  }
 
     let countdown = "";
 
