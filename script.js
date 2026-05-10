@@ -49,7 +49,47 @@ async function loadReminders() {
 
   reminderList.innerHTML = "";
 
+  const today = new Date();
+
+  const currentYear = today.getFullYear();
+
+  let upcoming = [];
+
+
+
   data.forEach(person => {
+
+    const parts = person.date.trim().split("-");
+
+    const month = parseInt(parts[1]);
+    const day = parseInt(parts[2]);
+
+    let nextDate = new Date(currentYear, month - 1, day);
+
+    if(nextDate < today){
+      nextDate = new Date(currentYear + 1, month - 1, day);
+    }
+
+    const diffTime = nextDate - today;
+
+    const diffDays = Math.ceil(
+      diffTime / (1000 * 60 * 60 * 24)
+    );
+
+    upcoming.push({
+      ...person,
+      daysLeft: diffDays
+    });
+
+  });
+
+
+
+  upcoming.sort((a, b) => a.daysLeft - b.daysLeft);
+
+
+
+  upcoming.forEach(person => {
 
     let icon = "🎂";
 
@@ -61,16 +101,27 @@ async function loadReminders() {
       icon = "⭐";
     }
 
+    let countdown = "";
+
+    if(person.daysLeft === 0){
+      countdown = "🎉 Today";
+    }
+    else if(person.daysLeft === 1){
+      countdown = "Tomorrow";
+    }
+    else{
+      countdown = `In ${person.daysLeft} days`;
+    }
+
     const card = document.createElement("div");
 
     card.className = "card";
 
     card.innerHTML = `
       <h3>${icon} ${person.name}</h3>
-      <p><strong>Type:</strong> ${person.type}</p>
-      <p><strong>Date:</strong> ${person.date}</p>
-      <p><strong>Phone:</strong> ${person.phone}</p>
-      <p>${person.notes}</p>
+      <p><strong>${person.type}</strong></p>
+      <p>${countdown}</p>
+      <p>${person.date}</p>
     `;
 
     reminderList.appendChild(card);
