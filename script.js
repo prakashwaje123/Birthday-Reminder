@@ -101,7 +101,13 @@ if(nextDate < today){
 
   upcoming.forEach(person => {
 
-    let icon = "🎂";
+  const eventDate = new Date(person.date);
+
+  const month = eventDate.getMonth() + 1;
+
+  const day = eventDate.getDate();
+
+  let icon = "🎂";
 
     if(person.type === "Anniversary"){
       icon = "💍";
@@ -158,10 +164,11 @@ async function checkTodayReminders() {
 
   data.forEach(person => {
 
-    const parts = person.date.trim().split("-");
+    const eventDate = new Date(person.date);
 
-    const eventMonth = parseInt(parts[1]);
-    const eventDay = parseInt(parts[2]);
+const eventMonth = eventDate.getMonth() + 1;
+
+const eventDay = eventDate.getDate();
 
     if (
       todayMonth === eventMonth &&
