@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
 
 });
 
-const API_URL = "https://script.google.com/macros/s/AKfycbzRG07EBU8FxTW4tIsl7j0PGl_x9aDmiq8qQN3F3RFB_NIiiQi8FefZRrjm__QSnYk/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzgeAMEPFvGw4Fucrs384lI6wm9Mg0tkaajsh3IYFKMDzw8C_9IWkVjpj3LB9C8GhFm/exec";
 
 const form = document.getElementById("reminderForm");
 const reminderList = document.getElementById("reminderList");
