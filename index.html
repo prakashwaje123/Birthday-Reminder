@@ -68,7 +68,16 @@
 
   <h2>Upcoming Events</h2>
 
-  <div id="reminderList"></div>
+<div class="search-container">
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="🔍 Search by name..." 
+    onkeyup="filterReminders()"
+  >
+</div>
+
+<div id="reminderList"></div>
 
 </div>
 
