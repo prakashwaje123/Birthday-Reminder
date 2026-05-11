@@ -81,3 +81,25 @@ button:hover{
 .card p{
   margin:4px 0;
 }
+.search-container {
+  margin: 20px 0;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #a76302; /* Matches your theme color */
+}
+
+/* Helper class to hide cards */
+.hidden {
+  display: none !important;
+}
