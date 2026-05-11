@@ -229,3 +229,18 @@ if ("serviceWorker" in navigator) {
     });
 
 }
+function filterReminders() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    // Look for the name inside the h3 tag of each card
+    const name = card.querySelector("h3").innerText.toLowerCase();
+    
+    if (name.includes(query)) {
+      card.classList.remove("hidden");
+    } else {
+      card.classList.add("hidden");
+    }
+  });
+}
