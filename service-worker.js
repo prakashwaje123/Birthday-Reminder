@@ -1,8 +1,5 @@
-// 1. Import OneSignal (This merges both workers into one)
-importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');
-
 const CACHE_NAME = "v3";
-const ASSETS = [
+const ASSETS_TO_CACHE = [
   "./",
   "./index.html",
   "./style.css",
@@ -10,15 +7,15 @@ const ASSETS = [
   "./manifest.json"
 ];
 
-// Install Event
+// 1. Install and Cache Files
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
   );
   self.skipWaiting();
 });
 
-// Activate Event
+// 2. Clean up old caches
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -29,7 +26,7 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// MANDATORY: Fetch listener for "Install App" prompt
+// 3. MANDATORY: The Fetch Handler (This triggers the Install Prompt)
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
