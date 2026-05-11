@@ -1,21 +1,16 @@
-const CACHE_NAME = "v3";
-const ASSETS_TO_CACHE = [
-  "./",
-  "./index.html",
-  "./style.css",
-  "./script.js",
-  "./manifest.json"
-];
+// This line imports OneSignal so it doesn't conflict with your app
+importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');
 
-// 1. Install and Cache Files
+const CACHE_NAME = "v5";
+const ASSETS = ["./", "./index.html", "./style.css", "./script.js", "./manifest.json"];
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
   );
   self.skipWaiting();
 });
 
-// 2. Clean up old caches
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -26,11 +21,9 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// 3. MANDATORY: The Fetch Handler (This triggers the Install Prompt)
+// MANDATORY: This specific block triggers the "Install App" prompt
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
+    caches.match(event.request).then((response) => response || fetch(event.request))
   );
 });
